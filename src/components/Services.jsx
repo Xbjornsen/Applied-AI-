@@ -1,27 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Typography, Container, List, ListItem, ListItemText } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-
-const theme = createTheme({
-  palette: {
-    type: 'light',
-    primary: {
-      main: '#d5dbe5',
-    },
-    secondary: {
-      main: '#00c5ff',
-    },
-    background: {
-      default: '#fff',
-      paper: '#f5f5f5',
-    },
-    text: {
-      primary: '#2b2d42',
-      secondary: '#c5c5c5',
-    },
-  },
-});
+import { ThemeProvider } from '@mui/styles';
+import {theme} from '../styling/theme';
 
 const Services = () => {
   return (
