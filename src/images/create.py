@@ -1,3 +1,4 @@
+from multiprocessing import process
 import requests
 import json
 from PIL import Image
@@ -7,9 +8,9 @@ from io import BytesIO
 prompt = "Generate an image depicting a neural network with interconnected nodes representing deep learning layers, surrounded by a cloud of diverse text snippets flowing into the network. Show text outputs in the form of generated responses or predictions emerging from the network. Capture the process of LLMs utilizing data and deep learning for text generation."
 
 # Set up the API credentials
-API_KEY = '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'
-API_URL = 'https://api.openai.com/v1/images/generations'
 
+API_KEY = process.env.APIKEY
+API_URL = 'https://api.openai.com/v1/images/generations'
 # Set up the request payload
 data = {
     'model': 'image-alpha-001',
