@@ -1,40 +1,23 @@
 import React from 'react';
-import { Box, Button, Typography } from '@mui/material';
-import { styled } from '@mui/system';
 import { Link } from 'react-router-dom';
-
-const Section = styled(Box)({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  height: '100vh',
-  backgroundColor: '#f1f1f1', // A light gray color
-});
-
-const CallToAction = styled(Button)({
-  margin: '2rem',
-  backgroundColor: '#6fcf97', // A green color
-  color: 'white',
-  '&:hover': {
-    backgroundColor: '#5bbf88', // A darker shade of green on hover
-  },
-});
 
 const Hero = () => {
   return (
-    <Section>
-      <Typography variant="h1" textAlign="center">
-        AI for Business
-      </Typography>
-      <Typography variant="h4" textAlign="center">
-      Stay Ahead of the Game
-      </Typography>
-      <Typography variant="subtitle1" textAlign="center" color="text.secondary">
+    <div className="flex flex-col items-center justify-center h-80vh bg-gray-100">
+      <h2 className="text-4xl font-bold text-center">AI for Business</h2>
+      <h5 className="text-xl text-center">Stay Ahead of the Game</h5>
+      <p className="text-gray-500 text-center">
         Simplify your work processes with AI-powered tools and training.
-      </Typography>
-      <CallToAction component={Link} to='aitools' variant="contained">Get Started</CallToAction>
-    </Section>
+      </p>
+      <button
+        className="mt-8 px-8 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 focus:outline-none"
+        style={{ width: '100%', maxWidth: '250px' }}
+        component={Link} 
+        to="aitools"
+      >
+        Get Started
+      </button>
+    </div>
   );
 };
 
