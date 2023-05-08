@@ -1,5 +1,5 @@
 import React from 'react';
-import aboutUs from '../images/aboutUs.png';
+import aboutUs from '../../images/aboutUs.png';
 
 const cards = [
     {
@@ -36,8 +36,8 @@ const cards = [
 
 const AiTools = () => {
     return (
-        <div className="max-w-1200 mx-auto px-4 py-16 md:max-w-960 md:px-3 sm:max-w-600 sm:px-2">
-            <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+        <div className="flex-1 flex-col container mx-auto py-16 md:max-w-960 md:px-3 sm:max-w-600 sm:px-2">
+            <div className=" grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
                 {cards.map((card, index) => (
                     <div key={index} className="flex flex-col h-full">
                         <img className="h-200 bg-cover" src={card.image} alt={card.title} />

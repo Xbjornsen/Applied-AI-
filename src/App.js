@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LandingPage from './components/LandingPage';
-import AboutUs from './components/AboutUs';
-import Services from './components/Services';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import ContactUs from './components/ContactUs';
-import AiTools from './components/AiTools'
+import LandingPage from './components/Pages/LandingPage';
+import AboutUs from './components/Pages/AboutUs';
+import Services from './components/Pages/Services';
+import Header from './components/Common/Header';
+import Footer from './components/Common/Footer';
+import ContactUs from './components/Pages/ContactUs';
+import AiTools from './components/Pages/AiTools'
 
 function App() {
   return (
