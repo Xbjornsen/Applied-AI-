@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Transition } from '@headlessui/react';
-import { Switch } from '@headlessui/react';
 import { MenuIcon } from '@heroicons/react/outline';
 import { XIcon } from '@heroicons/react/outline';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const handleMenuOpen = () => {
     setIsOpen(true);
@@ -17,44 +15,40 @@ const Header = () => {
     setIsOpen(false);
   };
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
   const isSmallScreen = 'sm';
 
   return (
     <>
       <header>
-        <nav className="bg-primary">
+        <nav className= "bg-slate-800 border-b border-slate-700">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center">
                 <button
                   onClick={handleMenuOpen}
-                  className="text-white hover:text-gray-200 inline-flex items-center justify-center p-2 rounded-md focus:outline-none"
+                  className="text-white hover:text-gray-500 inline-flex items-center justify-center p-2 rounded-md focus:outline-none"
                 >
                   <MenuIcon className="h-6 w-6" />
                 </button>
                 <Link
                   to="/"
-                  className="ml-4 text-xl font-bold text-white hover:text-gray-200"
+                  className="ml-4 text-2xl font-bold text-white hover:text-gray-500"
                 >
                   Applied AI
                 </Link>
               </div>
-              <div className="flex space-x-4">
+              <div className="hidden sm:flex sm:space-x-4">
                 {!isSmallScreen && (
                   <>
                     <Link
                       to="/about"
-                      className="text-white hover:text-gray-200 px-3 py-2 rounded-md font-medium"
+                      className="text-gray-800 hover:text-gray-700 px-3 py-2 rounded-md font-medium"
                     >
                       About
                     </Link>
                     <Link
                       to="/contact"
-                      className="text-white hover:text-gray-200 px-3 py-2 rounded-md font-medium"
+                      className="text-gray-800 hover:text-gray-700 px-3 py-2 rounded-md font-medium"
                     >
                       Contact
                     </Link>
@@ -82,12 +76,12 @@ const Header = () => {
                     <div>
                       <Link
                         to="/"
-                        className="text-xl font-bold text-gray-900"
+                        className="text-2xl font-bold text-gray-800 hover:text-gray-700"
                       >
                         Applied AI
                       </Link>
                     </div>
-                    <div className="-mr-2">
+                    <div className="mr-2">
                       <button
                         onClick={handleMenuClose}
                         type="button"
@@ -98,7 +92,8 @@ const Header = () => {
                       </button>
                     </div>
                   </div>
-                  <div className="px-2 pt-2 pb-3 space-y-1">
+                  <div className="px-2 pt-2 pb-3 space-y-1"
+                  >
                     <Link
                       to="/about"
                       className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
@@ -116,13 +111,10 @@ const Header = () => {
               </div>
             )}
           </Transition>
-          </nav>
+        </nav>
       </header>
     </>
   );
 };
 
 export default Header;
-
-
-
