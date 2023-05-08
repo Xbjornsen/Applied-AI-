@@ -1,31 +1,44 @@
 import React from 'react';
-import { Typography, Container, List, ListItem, ListItemText } from '@mui/material';
-import { ThemeProvider } from '@mui/styles';
-import {theme} from '../styling/theme';
+import { Container } from 'react-bootstrap'; // Assuming you are using Bootstrap for layout
 
 const Services = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <Container maxWidth="md">
-        <Typography variant="h4" component="h1" align="center" sx={{ mt: 4, mb: 4 }}>
+    <>
+      <Container maxWidth="md" className="flex flex-col items-center">
+        <h4 className="text-2xl font-bold mt-4 mb-4 text-center">
           Our Services
-        </Typography>
-        <List sx={{ mb: 4 }}>
-          <ListItem disablePadding>
-            <ListItemText primary="AI Toolset Training" secondary="Learn how to use our AI tools to maximize their potential." />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemText primary="AI Toolset Consultation" secondary="Get expert advice and guidance on how to use our AI tools." />
-          </ListItem>
-          <ListItem disablePadding>
-            <ListItemText primary="AI Tool Creation" secondary="We can create custom AI tools to meet your specific needs." />
-          </ListItem>
-        </List>
-        <Typography variant="body1" component="p">
+        </h4>
+        <ul className="mb-4">
+          <li className="list-none p-0">
+            <h5 className="text-lg font-semibold">
+              AI Toolset Training
+            </h5>
+            <p className="text-gray-500">
+              Learn how to use our AI tools to maximize their potential.
+            </p>
+          </li>
+          <li className="list-none p-0">
+            <h5 className="text-lg font-semibold">
+              AI Toolset Consultation
+            </h5>
+            <p className="text-gray-500">
+              Get expert advice and guidance on how to use our AI tools.
+            </p>
+          </li>
+          <li className="list-none p-0">
+            <h5 className="text-lg font-semibold">
+              AI Tool Creation
+            </h5>
+            <p className="text-gray-500">
+              We can create custom AI tools to meet your specific needs.
+            </p>
+          </li>
+        </ul>
+        <p className="text-base text-gray-500 text-center">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut tellus luctus, ornare felis ac, dictum magna. Nunc posuere, nisl nec posuere commodo, dolor odio consectetur nisl, nec sagittis libero sapien non nunc. Donec euismod velit non nunc vehicula posuere. Etiam semper luctus sapien vel euismod. Sed malesuada est in purus tempor, eget commodo nisl euismod. Nam luctus risus ut erat aliquet laoreet.
-        </Typography>
+        </p>
       </Container>
-    </ThemeProvider>
+    </>
   );
 };
 

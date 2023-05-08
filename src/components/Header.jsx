@@ -1,100 +1,128 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Switch from '@mui/material/Switch';
-import { ThemeProvider } from '@mui/material/styles';
-import { createTheme } from '@mui/material/styles';
-import { Menu, MenuItem, IconButton } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import { theme, darkTheme} from '../styling/theme';
+import { Transition } from '@headlessui/react';
+import { Switch } from '@headlessui/react';
+import { MenuIcon } from '@heroicons/react/outline';
+import { XIcon } from '@heroicons/react/outline';
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleMenuOpen = () => {
+    setIsOpen(true);
+  };
+
+  const handleMenuClose = () => {
+    setIsOpen(false);
+  };
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
   };
 
-  const handleMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-  };
+  const isSmallScreen = 'sm';
 
   return (
-    <ThemeProvider
-      theme={
-        isDarkMode
-          ? darkTheme : theme
-      }
-    >
-      <AppBar position="static" color="primary">
-        <Toolbar>
-        <IconButton
-            size="large"
-            edge="end"
-            color="inherit"
-            aria-label="menu"
-            aria-controls="menu"
-            aria-haspopup="true"
-            onClick={handleMenuOpen}
-            sx={{ mr: 2 }}
+    <>
+      <header>
+        <nav className="bg-primary">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between h-16">
+              <div className="flex items-center">
+                <button
+                  onClick={handleMenuOpen}
+                  className="text-white hover:text-gray-200 inline-flex items-center justify-center p-2 rounded-md focus:outline-none"
+                >
+                  <MenuIcon className="h-6 w-6" />
+                </button>
+                <Link
+                  to="/"
+                  className="ml-4 text-xl font-bold text-white hover:text-gray-200"
+                >
+                  Applied AI
+                </Link>
+              </div>
+              <div className="flex space-x-4">
+                {!isSmallScreen && (
+                  <>
+                    <Link
+                      to="/about"
+                      className="text-white hover:text-gray-200 px-3 py-2 rounded-md font-medium"
+                    >
+                      About
+                    </Link>
+                    <Link
+                      to="/contact"
+                      className="text-white hover:text-gray-200 px-3 py-2 rounded-md font-medium"
+                    >
+                      Contact
+                    </Link>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+          <Transition
+            show={isOpen}
+            enter="transition ease-out duration-100"
+            enterFrom="transform opacity-0 scale-95"
+            enterTo="transform opacity-100 scale-100"
+            leave="transition ease-in duration-75"
+            leaveFrom="transform opacity-100 scale-100"
+            leaveTo="transform opacity-0 scale-95"
           >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: 'text.primary' }}>
-            <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-              Applied AI
-            </Link>
-          </Typography>
-
-          <Menu
-            id="menu"
-            anchorEl={anchorEl}
-            open={Boolean(anchorEl)}
-            onClose={handleMenuClose}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-          >
-            <MenuItem component={Link} to="/courses" onClick={handleMenuClose}>
-              Courses
-            </MenuItem>
-            <MenuItem component={Link} to="/consultation" onClick={handleMenuClose}>
-              Consultation
-            </MenuItem>
-            <MenuItem component={Link} to="/aitools" onClick={handleMenuClose}>
-              AI Tools
-            </MenuItem>
-            <MenuItem component={Link} to="/quotes" onClick={handleMenuClose}>
-              Quotes
-            </MenuItem>
-          </Menu>
-          <Button component={Link} to="/about" color="inherit" sx={{ mr: 2 }}>
-            About Us
-          </Button>
-          <Button component={Link} to="/services" color="inherit" sx={{ mr: 2 }}>
-            Our Services
-          </Button>
-          <Button component={Link} to="/contact" color="inherit" sx={{ mr: 2 }}>
-            Contact Us
-          </Button>
-          <Switch checked={isDarkMode} onChange={toggleDarkMode} />
-        </Toolbar>
-      </AppBar>
-    </ThemeProvider>
+            {(ref) => (
+              <div
+                ref={ref}
+                className="absolute top-0 inset-x-0 z-10 p-2 transition transform origin-top-right md:hidden"
+              >
+                <div className="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
+                  <div className="px-5 pt-4 flex items-center justify-between">
+                    <div>
+                      <Link
+                        to="/"
+                        className="text-xl font-bold text-gray-900"
+                      >
+                        Applied AI
+                      </Link>
+                    </div>
+                    <div className="-mr-2">
+                      <button
+                        onClick={handleMenuClose}
+                        type="button"
+                        className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
+                      >
+                        <span className="sr-only">Close menu</span>
+                        <XIcon className="h-6 w-6" />
+                      </button>
+                    </div>
+                  </div>
+                  <div className="px-2 pt-2 pb-3 space-y-1">
+                    <Link
+                      to="/about"
+                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                    >
+                      About
+                    </Link>
+                    <Link
+                      to="/contact"
+                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                    >
+                      Contact
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            )}
+          </Transition>
+          </nav>
+      </header>
+    </>
   );
 };
 
 export default Header;
+
+
+
